@@ -1,0 +1,17 @@
+---
+- hosts: all
+  user: vagrant
+  become: yes
+  roles:
+    - init
+    - yum
+    - php
+    - composer
+    - redis
+    - redis-test
+    # - laravel
+    # - httpd
+  vars:
+    ip: 192.168.33.10
+    php_version: php72
+

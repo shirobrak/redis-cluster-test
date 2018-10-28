@@ -1,0 +1,11 @@
+---
+- name: check composer
+  stat: path=/usr/local/bin/composer
+  register: composer
+
+- name: install laravel
+  composer:
+    command: require
+    global_command: yes
+    arguments: laravel/laravel
+  when: composer.stat.exists == true

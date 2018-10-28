@@ -1,0 +1,15 @@
+---
+- name: check composer
+  stat: path=/usr/local/bin/composer
+  register: composer
+
+- name: get composer
+  become: yes
+  get_url: 
+    url: https://getcomposer.org/download/1.7.0/composer.phar
+    dest: /usr/local/bin/composer
+    mode: 0777
+  when: composer.stat.exists == false
+
+
+  

@@ -1,0 +1,10 @@
+---
+- name: install epel
+  yum:
+    name=epel-release
+    state=latest
+
+- name: install remi
+  yum:
+    name=https://rpms.remirepo.net/enterprise/remi-release-7.rpm
+    state=latest

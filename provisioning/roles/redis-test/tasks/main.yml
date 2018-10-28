@@ -1,0 +1,16 @@
+---
+# copy cluster-test dir
+- copy: >
+    src=./dest/cluster-test/
+    dest=/home/vagrant/cluster-test
+    owner=vagrant
+    group=vagrant
+    mode=0777
+
+# copy src dir
+- copy: >
+    src=./dest/src/
+    dest=/home/vagrant/src
+    owner=vagrant
+    group=vagrant
+    mode=0777

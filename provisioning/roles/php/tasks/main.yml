@@ -1,0 +1,28 @@
+---
+- name: check remi-release-7
+  stat: path=/etc/yum.repos.d/remi-{{ php_version }}.repo
+  register: remi_release_7
+
+- name: install remi-release-7
+  yum:
+    name: http://rpms.famillecollet.com/enterprise/remi-release-7.rpm
+    state: latest
+  when: remi_release_7.stat.exists == false
+
+- name: install php & php-ext
+  become: yes
+  yum:
+    name='{{ item }}'
+    enablerepo=remi,remi-{{ php_version }}
+    state=latest
+  with_items:
+    - php
+    - php-devel
+    - php-mbstring
+    - php-pdo
+    - php-gd
+    - php-zip
+    - php-xml
+    - php-mysqlnd
+
+  
